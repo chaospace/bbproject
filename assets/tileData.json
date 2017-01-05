@@ -1,0 +1,366 @@
+{
+  "resources":{
+    "blocks":{
+      "191x191":"assets/image/191x191_block.jpg",
+      "388x191":"assets/image/388x191_block.jpg",
+      "191x388":"assets/image/191x388_block.jpg",
+      "388x388":"assets/image/388x388_block.jpg"
+    }
+  },
+  "menus":[
+     {
+          "label":"JS Project",
+          "type":"JavaScript"
+     },
+    {
+        "label":"IOS & Android Project",
+        "type":"Application"
+    },
+    {
+        "label":"AS Project",
+        "type":"ActionScript"
+    },
+	{
+        "label":"All Project",
+        "type":""
+    },
+	{
+        "label":"About B.B",
+        "title":"Block Build",
+        "contents":{
+            "date":"2016.1.03",
+            "description":"타일맵 형식의 사이트를 구성해보자 하는 마음에 시작한 프로젝트<br/>시작은 단순이 타일이 클릭&드래그 시 무한히 이어지는게 목표였는데 조금씩 살이 붙다가<br/>지금의 형태가 되었다. 블럭에 내용을 보여줄 것도 없고해서 일단 진행했던 프로젝트로 채움",
+            "language":"JavaScript, PixiJS, Howljs, TweenLite, HTML, CSS",
+            "implements":["타일 타입에 따른 내부 타일 구성", "드래그앤 드랍에 따른 타일 생성","타일 추가 시 위치에 기반한 트랜지션", "타일 마우스 오버바향에 따른 타일커버 트랜지션","카테고리 타입에 따른 타일 데이터 갱신","Howljs를 이용한 사운드재생"],
+            "thumbnails":["assets/image/bb_thumb_1.jpg"],
+            "link":""
+        }
+     }
+  ],
+  "tiles":[
+      {
+        "type":"JavaScript",
+        "items":[
+            {
+              "title":"Dungeon Fighter",
+              "texture":{
+                "guide":"2x1",
+                "path":"assets/image/parallax.jpg",
+                "w":388,
+                "h":388
+              },
+              "contents":{
+                "date":"2016.12.13",
+                "thumbnails":["assets/image/parallax_thumb_0.jpg","assets/image/parallax_thumb_2.jpg","assets/image/parallax_thumb_1.jpg"],
+                "language":"JavaScript, TweenLite, HTML, CSS",
+                "description":"던전앤파이터 티징 사이트로 마우스 휠에 따른 가로이동과 함게 패럴럭스 효과 구현 핵심이었다.<br/>게임 일러스트가 멋드러져서 인지 만든 후의 화면도 꽤 훌룡하게 보였다<br/>같은 구현내용도 디스플레이가 중요함을 실감 ㅎ",
+                "implements":["휠 움직임에 따라 프레임값을 조절","타임라인 객체 구현", "애니메이션 랜더러 객체 구현"],
+                "link":"http://www.dfoneople.com/news/updates/Chronicles-of-Luke"
+              }
+            }
+        ]
+      },
+    {
+        "type":"Application",
+        "items":[
+            {
+              "title":"현대자동차 웹진",
+              "texture":{
+                "guide":"2x1",
+                "path":"assets/image/hyundai_webzine.jpg",
+                "w":388,
+                "h":191
+              },
+              "contents":{
+                "date":"2015.10",
+                "description":"영어와 러시아어로 이루어진 현대 자동차 웹진<br/>보여주는게 중요하고 수정도 빈번한 관계로 효율적인 Animation방식을<br/>구현하기 위해 이것저것 생각해 본 계기가 되었다",
+                "language":"IOS, Objective-C",
+                "implements":["언어 설정에 따른 이미지 전환","페이지 이동에 따른 에니메이션 구현"],
+                "thumbnails":["assets/image/hyundai_webzine_thumb_0.jpg", "assets/image/hyundai_webzine_thumb_1.jpg", "assets/image/hyundai_webzine_thumb_2.jpg"],
+                "link":""
+              }
+            },
+            {
+              "title":"S-Oil 구도일",
+              "texture":{
+                "guide":"2x2",
+                "path":"assets/image/s_oil.jpg",
+                "w":191,
+                "h":191
+              },
+              "contents":{
+                "date":"2013.03",
+                "description":"s오일 어플리케이션 네이티브 영역과 웹컨텐츠를 같이 사용한 하이브리드 앱<br/>IOS 첫 네이티브 ui제작을 경험하게 해준 프로젝트로<br/>ui테마 변경에서 부터 커스텀 ui제작까지 다양한 경험을 얻었다.<br/>",
+                "implements":["CoreAudio를 이용한 사운드 믹싱","폰의 Accelerometer이용한 포인트 게임"],
+                "language":"IOS, Objective-C",
+                "thumbnails":["assets/image/s_oil_thumb_1.jpg", "assets/image/s_oil_thumb_2.jpg"],
+                "link":"https://itunes.apple.com/us/app/s-oil-gudoil/id463703083?l=ko&ls=1&mt=8"
+              }
+            },
+            {
+              "title":"All That France",
+              "texture":{
+                "guide":"2x2",
+                "path":"assets/image/koair_france.jpg",
+                "w":191,
+                "h":191
+              },
+              "contents":{
+                "date":"2016.1",
+                "description":"대한항공 올댓프랑스 하이드브리드 앱<br/>비콘을 버스정류소에 설치한 관계로 테스트를 위해 버스정류소를 헤메던 기억과<br/>당시에는 살짝 아쉬운 비콘의 반응성이 기억에 남는 프로젝트.",
+                "language":"IOS, swift, Android, Beacon",
+                "implements":["비콘알림을 위한 비콘매니저","백그라운드 수신시 투명액티비티 띄우기(안드로이드)"],
+                "thumbnails":["assets/image/koair_france_thumb1.jpg"],
+                "link":"https://itunes.apple.com/app/id1058218839"
+              }
+            }
+        ]
+    },
+    {
+     "type":"JavaScript",
+     "items":[
+         {
+           "title":"PixelDraw",
+           "texture":{
+             "guide":"1x2",
+             "path":"assets/image/pixelDraw.jpg",
+             "w":191,
+             "h":388
+           },
+           "contents":{
+             "date":"2015.08",
+             "thumbnails":["assets/image/pixelDraw_thumbnail_0.jpg", "assets/image/pixelDraw_thumbnail_1.jpg", "assets/image/pixelDraw_thumbnail_2.jpg"],
+             "language":"JavaScript, HTML, CSS",
+             "description":"해외 사이트에 적용된 것을 보고 호기심에 시작한 개인 프로젝트<br/>기억에 그 사이트는 업로드된 이미지의 컬러 분포도를 분석해 유사 컬러값을 가진 픽셀을 서로 연결하며<br/>아웃라인을 추출했는데 부족한 실력에 어설픈 흉내에서 끝나버린 작업...그래도 최대한 비슷한 느낌을 위해<br/>voroni공식과 이미지픽셀 제어부분도 꽤 열심히 봤던 기억이 난다.<br/>이미지의 픽셀 조작이 오래걸려 중간에 worker를 이용해 조금은 속도개선을 하였으나<br/>사진마다 적절한 컬러분포 값을 제어하는건 결국 실패 ㅠㅠ",
+             "implements":["Canvas를 이용한 이미지 필터","worker를 이용한 백그라운드 연산", "사진 데이터 조작 후 픽셀 값에 따른 데이터 추출"],
+             "link":""
+           }
+         },
+         {
+           "title":"...",
+           "texture":{
+             "guide":"2x2",
+             "path":"assets/image/191x191.png",
+             "w":191,
+             "h":191
+           },
+           "contents":{
+             "date":"2013.03",
+             "description":"",
+             "language":"IOS, Objective-C",
+             "thumbnails":["assets/image/s_oil_thumb_1.jpg", "assets/image/s_oil_thumb_2.jpg"],
+             "link":""
+           }
+         },
+         {
+           "title":"ElasticLetter",
+           "texture":{
+             "guide":"2x2",
+             "path":"assets/image/elasticLetter.jpg",
+             "w":191,
+             "h":191
+           },
+           "contents":{
+             "date":"2016.04",
+             "description":"마우스 클릭 앤 드래그에 따른 인터렉티브 효과<br/>파티클에 탄성을 적용해 파티클 영역이 겹치면 튕긴다.<br/>플래시 초반 많이 쓴 효과인데 Canvas를 통해 구현하며 느낌 소감이라면<br/>음... 플래시가 정말 편의성이 좋았구나 싶다. ㅎㅎ",
+             "language":"JavaScript, Canvas",
+             "thumbnails":["assets/image/elastic_thumb_1.jpg", "assets/image/elastic_thumb_2.jpg"],
+             "link":""
+           }
+         }
+
+     ]
+   },
+   
+    {
+     "type":"ActionScript",
+     "items":[
+         {
+           "title":"경기도문화의전당",
+           "texture":{
+             "guide":"2x1",
+             "path":"assets/image/ggac.jpg",
+             "w":191,
+             "h":191
+           },
+           "contents":{
+             "date":"2007.02",
+             "description":"사회생활하며 만든 첫 All Flash사이트 작업물<br/>3뎁스 메뉴 활성화와 리사이즈에 따른 처리 배경이미지에 따른 배경컬러제어 등으로<br/>당시 나에게는 생각을 많이 하게한 사이트<br/>막연히 책으로만 알던 디자인패턴을 적용하며 꽤 흐뭇해 했지만 결국 엄청난 삽질이었던 걸 훗날 깨우쳤다<br/>그래도 덕분에 적정한 디자인패턴의 사용법을 체감한 것은 확실.",
+             "language":"ActionScript",
+             "thumbnails":["assets/image/ggac_thumb_1.jpg", "assets/image/ggac_thumb_2.jpg"],
+             "link":""
+           }
+         },
+         {
+          "title":"Poe",
+
+          "texture":{
+            "guide":"2x1",
+            "path":"assets/image/191x388_block.jpg",
+            "w":191,
+            "h":191
+          },
+          "contents":{
+            "date":"2010.10",
+            "language":"ActionScript, Flex",
+            "thumbnails":["assets/image/poe1.jpg", "assets/image/poe2.jpg"],
+            "description":"손쉬운 플래시 포토앨범 생성툴<br/>StoryAlbum의 아쉬운 점은 보완하여 스크립트만 구성된 개인프로젝트<br/>ByteArray를 다루며 파일이 만들어지는게 신기해 재미있게 진행한 플젝",
+            "implements":["FileApi를 이용한 사진 임포트","사진 크기 조정및필터효과 구현","사진 코멘트 작성 기능","포토이펙트를 가진 베이스swf 구현", "ByteArray를 이용해 추가정보가(사진, 텍스트) 포함된 swf생성"],
+            "link":""
+          }
+       },
+       {
+        "title":"Chaospace",
+
+        "texture":{
+          "guide":"2x1",
+          "path":"assets/image/191x191_block.jpg",
+          "w":191,
+          "h":191
+        },
+        "contents":{
+          "date":"2005.10",
+          "language":"ActionScript",
+          "thumbnails":["assets/image/first_flash_thumb_1.jpg", "assets/image/first_flash_thumb_2.jpg"],
+          "description":"플래시를 배우고 처음으로 만든 홈페이지<br/>신명용의 모든걸 알려주마 동영상강의를 보고 물리공식 이해한다고 뒤늦게 이해도 잘 못하는 수학책을 보고 했다<br/>당시엔 디자인도 잘하고 싶어 나름 노력했는데 ㅋㅋㅋ 지금보면 조악한 스크립트수준이지만<br/>당시에는 참신하다고 스스로 대견해 하며 만들었던 기억이 있다.",
+          "implements":[],
+          "link":""
+        }
+     },
+         {
+           "title":"StoryAlbum",
+           "texture":{
+             "guide":"2x2",
+             "path":"assets/image/story_album.jpg",
+             "w":191,
+             "h":191
+           },
+           "contents":{
+             "date":"2010.04",
+             "language":"ActionScript, Flex",
+             "thumbnails":["assets/image/story_album_thumb_1.jpg", "assets/image/story_album_thumb_2.jpg"],
+             "description":"플래시 jsfl을 이용한 무비메이커<br/>제작의 컨셉은 손쉬운 포토앨범 생성<br/>1. 앨범을 만들 사진업로드<br/>2. 배경음악 선택<br/>3. 사진전환 효과 선택<br/>앞에 순서를 거치고 저장버튼 클릭 시 영상을 제공해 주는 서비스.",
+             "implements":["jsfl을 이용해 포토이펙트 구현", "타임라인 매니저 구현", "이펙트 매니저 구현", "스토리 앨범 코어 설계"],
+             "link":""
+           }
+        }
+
+     ]
+   },
+    {
+     "type":"JavaScript",
+     "items":[
+         {
+           "title":"Socket.I.O",
+           "texture":{
+             "guide":"2x1",
+             "path":"assets/image/socketio.jpg",
+             "w":388,
+             "h":191
+           },
+           "contents":{
+             "date":"2014.04",
+             "description":"socketIO를 기반으로 폰과 브라우저를 이용한 실시간 통신 미니게임<br/>각 뷰는 socket을 연결해 nodeJS와 통신하고 통신 내용을 통해 실시간으로 화면을 갱신한다",
+             "language":"JavaScript, coffeeScript, NodeJS, ActionScript",
+             "implements":["nodeJS를 이용간 채팅룸 구성","컨트롤 뷰 구현(스마트폰)","디스플레이 뷰 구현(플래시)"],
+             "thumbnails":["assets/image/socketio_thumb_1.jpg", "assets/image/socketio_thumb_2.jpg", "assets/image/socketio_thumb_3.jpg"],
+             "link":""
+           }
+         },
+         {
+           "title":"...",
+           "date":"2016.4",
+           "texture":{
+             "guide":"2x2",
+             "path":"assets/image/elasticletter.jpg",
+             "w":388,
+             "h":191
+           },
+           "contents":{
+             "thumbnails":[""],
+             "description":"",
+             "link":""
+           }
+         }
+     ]
+   },
+
+    {
+      "type":"JavaScript",
+      "items":[
+          {
+            "title":"...",
+            "texture":{
+              "guide":"2x2",
+              "path":"assets/image/thumb.png",
+              "w":191,
+              "h":191
+            },
+            "contents":{
+              "date":"",
+              "language":"",
+              "thumbnails":[],
+              "description":"",
+              "link":""
+            }
+          },
+          {
+            "title":"ParticleNode",
+            "texture":{
+              "guide":"2x2",
+              "path":"assets/image/particleNode.jpg",
+              "w":191,
+              "h":191
+            },
+            "contents":{
+              "date":"2015.06",
+              "description":"Canvas를 이용한 인터렉티브 작업<br/>일정간격마다 랜덤한 숫자의 파티클을 생성해 보여주고 마우스 드래그에 따른 추가 파티클 생성<br/>각 파티클은 일정거리안에 있는 노드를 라인으로 연결한다.",
+              "implements":["파티클 emitter구현"],
+              "language":"JavaScript, Canvas",
+              "thumbnails":["assets/image/particleNode_thumb_1.jpg"],
+              "link":"http://chaospace.github.io/particle-node/"
+            }
+          },
+          {
+            "title":"RecursiveTree",
+            "texture":{
+              "guide":"2x1",
+              "path":"assets/image/recursiveTree.jpg",
+              "w":388,
+              "h":191
+            },
+            "contents":{
+              "date":"2015.05",
+              "description":"재귀함수를 이용한 나무만들기<br/>플래시 초반 Graphics에서 자주 이용하던 고전적인 거지만<br/>표현을 살짝만 변경해 주면 느낌이 많이 달라지는 것 같다",
+              "language":"JavaScript, Canvas",
+              "thumbnails":["assets/image/recursiveTree_thumb_1.jpg", "assets/image/recursiveTree_thumb_2.jpg"],
+              "link":"http://chaospace.github.io/recursive-tree/"
+            }
+          }
+      ]
+    },
+     {
+       "type":"Application",
+       "items":[
+           {
+             "title":"Samsung Membership",
+             "texture":{
+               "guide":"2x1",
+               "path":"assets/image/sec_membership.png",
+               "w":388,
+               "h":388
+             },
+             "contents":{
+               "date":"2016.11.15",
+               "description":"삼성전자 멤버십 하이브리드 앱<br/>하이브리드 특성상 웹을 구현후 앱은 웹뷰로 포팅만 하면 끝인 줄 알았으나<br/>보안이란 벽 앞에 삽질을 했던 프로젝트<br/>진행중 ios버전 업데이트와 함께 swift3.0 강제 스터디를 선사한 프로젝트",
+               "language":"IOS, swift3.0",
+               "implements":["jsContext를 이용한 jsInterface구현","커스텀 AlertView구현"],
+               "thumbnails":["assets/image/sec_membership_thumb_1.jpg","assets/image/sec_membership_thumb_2.jpg"],
+               "link":"http://membership.samsung.com/sec"
+             }
+           }
+       ]
+     }
+
+  ]
+}

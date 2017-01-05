@@ -1,0 +1,279 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>chaospace's block build project</title>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css" />
+  <link rel="stylesheet" href="css/style.min.css">
+
+
+</head>
+<body>
+  <div id="navigation-layer">
+    <div class="logo">
+        <h3><a href="#" onclick="goInit(); return false;">B.B Project</a></h3>
+    </div>
+    <div class="menu-container"></div>
+    <div class="side">
+        <!--<a class="btn_sound" href="#" onclick="toggleSound(); return false;">sound on/off</a>-->
+        chrome에서 최적화
+    </div>
+  </div>
+  <div id="contents-layer">
+      <div class="wrapper">
+          <div class="section"></div>
+      </div>
+  </div>
+  <div id="gesture-layer">
+      <div class="gesture"></div>
+  </div>
+  <div id="progress-layer">
+  </div>
+  <script>
+    function detectIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        if (msie > 0) {
+        // IE 10 or older => return version number
+        return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+        }
+
+        var trident = ua.indexOf('Trident/');
+        if (trident > 0) {
+        // IE 11 => return version number
+        var rv = ua.indexOf('rv:');
+        return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+        }
+
+        var edge = ua.indexOf('Edge/');
+        if (edge > 0) {
+        // Edge (IE 12+) => return version number
+        return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+        }
+        // other browser
+        return false;
+    }
+
+    var v = detectIE();
+    if( typeof v == "number" &&  v < 10  ){
+        alert("ie 10이하 브라우저에서는 동작하지 않습니다!" );
+        document.body.innerHTML='<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>'
+    }
+  </script>
+  <script src="js/libs/tweenmax/easing/EasePack.js"></script>
+  <script src="js/libs/tweenmax/plugins/CSSPlugin.js"></script>
+  <script src="js/libs/tweenmax/TweenLite.js"></script>
+  <script src="js/libs/tweenmax/TimelineMax.js"></script>
+
+  <script src="js/libs/pixi.js"></script>
+  <script src="js/libs/howler.js"></script>
+  <script src="js/libs/jquery.min.js"></script>
+  <script src="js/libs/jquery.nicescroll.min.js"></script>
+  <script src="js/libs/heartcode-canvasloader.js"></script>
+  <script src="js/app.min.js"></script>
+
+  <script>
+   // ie는 10이상에서 보임.
+
+    var SW  = $(window).width();
+    var SH  = $(window).height();
+
+    var textures;
+    var wrapper = $(".wrapper");
+    var contentsLayer = $("#contents-layer");
+    var progressLayer = $("#progress-layer");
+    /*var bgSound = new Howl({
+      src: ['assets/sound/bensound-funnysong.mp3'],
+      loop: true,
+      volume:0.2,
+      onload:function(){
+          //$(".side").show();
+          //bgSound.play();
+      }
+    });
+    function toggleSound(){
+      var soundButton = $(".btn_sound");
+      if(soundButton.hasClass("off")){
+          soundButton.removeClass("off");
+          bgSound.fade(0, 0.2, 2000);
+      } else {
+          soundButton.addClass("off");
+          bgSound.fade(0.2, 0, 2000);
+      }
+    }
+    */
+
+
+    var gestureLayer = $("#gesture-layer");
+    var gestureAnimation = new TimelineMax({paused:true, yoyo:true, repeat:-1, repeatDelay:.2});
+    var gestureDisplay = false;
+    function composeGestureAnimation(){
+        var px = 0;
+    	var py = 0;
+    	for( var i=0; i<10;i++){
+    		py = -102 * i;
+    		px = 0;
+    		gestureAnimation.to($(".gesture"), 0, {css:{backgroundPosition:+ px +"px "+ py +"px"}}, "+=0.03");
+    		for( var j=0; j<6;j++){
+    			px = -154 * j;
+    			gestureAnimation.to($(".gesture"), 0, {css:{backgroundPosition:+ px +"px "+ py +"px"}}, "+=0.03");
+    		}
+    	}
+    }
+    composeGestureAnimation();
+    function toggleGestureUI( e ){
+        if( !gestureDisplay ) {
+            TweenLite.set( gestureLayer, {x: e.pageX+10, y: e.pageY-102});
+            TweenLite.to( gestureLayer, .3, {autoAlpha:1});
+            $(window).on("mousemove", function( e ){
+                TweenLite.to( gestureLayer, .2, {x:e.pageX+10, y:e.pageY-102});
+            });
+            gestureAnimation.play();
+            gestureDisplay = true;
+            TweenLite.delayedCall( 2, hideGestureUI );
+            function hideGestureUI(){
+                $(window).off("mousemove");
+                TweenLite.to( gestureLayer, .3, {autoAlpha:0, onComplete:function(){
+                    gestureAnimation.stop();
+                    gestureLayer.hide();
+                    gestureAnimation = null;
+                }});
+            }
+        }
+    }
+
+
+
+
+    var progress = new CanvasLoader("progress-layer");
+    progress.setColor('#ffcc00'); // default is '#000000'
+    progress.setDiameter(44); // default is 40
+    progress.setSpeed(2); // default is 2
+    progress.show(); // Hidden by default
+    progressLayer.css({left:(SW/2)+"px", top:(SH/2)+"px"});
+
+
+    function toggleProgress(){
+        if( progressLayer.is(":visible") ) {
+            progressLayer.hide();
+            $(document).off("mousemove");
+        } else {
+            progressLayer.show();
+            $(document).on("mousemove", function( e ){
+                updateProgressPosition( e );
+            });
+        }
+    }
+
+
+    function goInit(){
+        pixiView.initPosition();
+    }
+
+    function updateProgressPosition( e ){
+        progressLayer.css({left:(e.pageX-22)+"px", top:(e.pageY-22)+"px"});
+    }
+
+    function onLoadComplete_TileData( resoponse ){
+        var jsonData = JSON.parse(resoponse);
+        jsonResoruces = jsonData.resources;
+        var blocks = jsonResoruces.blocks;
+        var loader = new PIXI.loaders.Loader();
+        for( var key in blocks ){
+            loader.add( key, blocks[key]);
+        }
+
+        loader.load( function(loader, resources){
+            toggleProgress();
+            textures = resources;
+            createMenu( jsonData.menus );
+            pixiView.setDataProvider( jsonData.tiles );
+            pixiView.startRender();
+            window.onresize = onResize_Screen;
+        });
+    }
+
+
+    function createMenu( dataProvider ){
+        var menuLayer = $(".menu-container");
+        var container = $("<ul/>");
+        $.each( dataProvider, function( index, vo ){
+            var menuItem = $("<li>", {text:vo.label});
+            menuItem.data("data", vo );
+            menuItem.on("click", function(){
+                var vo = $(this).data("data");
+                var idx = $(this).index();
+                if( idx != dataProvider.length-1 ){
+                    pixiView.reOrderTileByType( vo.type );
+                } else {
+                    contentLoaded = true;
+                    openDetailViewByData( vo );
+                }
+                return false;
+            });
+            container.append( menuItem );
+        });
+        menuLayer.append( container );
+    }
+
+    function onResize_Screen(){
+        pixiView.resize();
+        contentsView.resize();
+    }
+
+    function loadJSON(path, callback) {
+        var xobj = new XMLHttpRequest();
+        //xobj.overrideMimeType("application/json");
+        xobj.open('GET', path, true); // Replace 'my_data' with the path to your file
+        xobj.onreadystatechange = function () {
+            if (xobj.readyState == 4 && xobj.status == "200") {
+              // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+              callback(xobj.responseText);
+            }
+        };
+      xobj.send(null);
+    }
+
+    var contentLoaded = false;
+    var contentsView = new ContentsViewer( contentsLayer );
+    $(contentsView).on( ContentsViewEvent.CLOSE_CONTENTS, function( e ){
+        contentsView.focusOutTransition();
+        pixiView.contentFocusOutTransition();
+        contentLoaded = false;
+    })
+    .on( ContentsViewEvent.LOAD_COMPLETE, function( e ){
+        contentLoaded = true;
+        validateDetailContentShow();
+    })
+
+    function validateDetailContentShow(){
+        if( pixiView.detailBGContainer.position.y == 0 &&  contentLoaded ){
+            contentsView.focusInTransition();
+            toggleProgress();
+        }
+    }
+
+    var pixiView = new PixiViewContainer();
+    //pixiView.setGestureUI({isDisplay:false, layer:gestureLayer, animation:gestureAnimation});
+    $(pixiView).on( PixiViewEvent.VIEW_MOUSE_DOWN, function(e){
+        updateProgressPosition( e.originalEvent );
+        toggleGestureUI( e.originalEvent );
+    })
+    .on( PixiViewEvent.OPEN_DETAIL_VIEW, function(e){
+        openDetailViewByData( e.vo );
+    });
+
+
+    function openDetailViewByData( data ){
+        toggleProgress();
+        contentsView.setContentsData( data );
+        pixiView.contentFocusInTransition( validateDetailContentShow );
+    }
+
+    loadJSON( "./assets/tileData.json", onLoadComplete_TileData );
+
+  </script>
+
+
+</body>
+</html>
