@@ -9,6 +9,15 @@
 
 </head>
 <body>
+    <div id="contents-layer">
+        <div class="dim-bg"/></div>
+        <div class="wrapper">
+            <div class="section"></div>
+            <div class="close-button"><img src="./assets/image/close_button.jpg"/></div>
+        </div>
+
+    </div>
+
   <div id="navigation-layer">
     <div class="logo">
         <h3><a href="#" onclick="goInit(); return false;">B.B Project</a></h3>
@@ -19,16 +28,15 @@
         chrome에서 최적화
     </div>
   </div>
-  <div id="contents-layer">
-      <div class="wrapper">
-          <div class="section"></div>
-      </div>
-  </div>
+
   <div id="gesture-layer">
       <div class="gesture"></div>
   </div>
   <div id="progress-layer">
   </div>
+  <div id="cover-layer"></div>
+  <canvas id="viewport"></canvas>
+
   <script>
     function detectIE() {
         var ua = window.navigator.userAgent;
@@ -82,34 +90,13 @@
     var wrapper = $(".wrapper");
     var contentsLayer = $("#contents-layer");
     var progressLayer = $("#progress-layer");
-    /*var bgSound = new Howl({
-      src: ['assets/sound/bensound-funnysong.mp3'],
-      loop: true,
-      volume:0.2,
-      onload:function(){
-          //$(".side").show();
-          //bgSound.play();
-      }
-    });
-    function toggleSound(){
-      var soundButton = $(".btn_sound");
-      if(soundButton.hasClass("off")){
-          soundButton.removeClass("off");
-          bgSound.fade(0, 0.2, 2000);
-      } else {
-          soundButton.addClass("off");
-          bgSound.fade(0.2, 0, 2000);
-      }
-    }
-    */
-
-
     var gestureLayer = $("#gesture-layer");
-    var gestureAnimation = new TimelineMax({paused:true, yoyo:true, repeat:-1, repeatDelay:.2});
+    var introAnimation = new TimelineMax({paused:true});
     var gestureDisplay = false;
     function composeGestureAnimation(){
         var px = 0;
     	var py = 0;
+        gestureAnimation = new TimelineMax({yoyo:true, repeat:1, repeatDelay:.2});
     	for( var i=0; i<10;i++){
     		py = -102 * i;
     		px = 0;
@@ -119,31 +106,19 @@
     			gestureAnimation.to($(".gesture"), 0, {css:{backgroundPosition:+ px +"px "+ py +"px"}}, "+=0.03");
     		}
     	}
-    }
-    composeGestureAnimation();
-    function toggleGestureUI( e ){
-        if( !gestureDisplay ) {
-            TweenLite.set( gestureLayer, {x: e.pageX+10, y: e.pageY-102});
-            TweenLite.to( gestureLayer, .3, {autoAlpha:1});
-            $(window).on("mousemove", function( e ){
-                TweenLite.to( gestureLayer, .2, {x:e.pageX+10, y:e.pageY-102});
-            });
-            gestureAnimation.play();
-            gestureDisplay = true;
-            TweenLite.delayedCall( 2, hideGestureUI );
-            function hideGestureUI(){
-                $(window).off("mousemove");
-                TweenLite.to( gestureLayer, .3, {autoAlpha:0, onComplete:function(){
-                    gestureAnimation.stop();
-                    gestureLayer.hide();
-                    gestureAnimation = null;
-                }});
-            }
-        }
+
+        return gestureAnimation;
+
     }
 
-
-
+    introAnimation.addLabel("startGestureIntro");
+    introAnimation.to( gestureLayer, 0, {x: SW/2-80, y: SH/2-102} );
+    introAnimation.to( gestureLayer, .3, {autoAlpha:1} );
+    introAnimation.add( composeGestureAnimation() );
+    introAnimation.addLabel("hideGestureIntro");
+    introAnimation.to( gestureLayer, .3, {autoAlpha:0} );
+    introAnimation.to( $("#cover-layer"),  1 , {autoAlpha:0, onComplete:function(){$("#cover-layer").remove();}});
+    introAnimation.addLabel("endGestureIntro");
 
     var progress = new CanvasLoader("progress-layer");
     progress.setColor('#ffcc00'); // default is '#000000'
@@ -184,12 +159,16 @@
         }
 
         loader.load( function(loader, resources){
+
             toggleProgress();
             textures = resources;
             createMenu( jsonData.menus );
             pixiView.setDataProvider( jsonData.tiles );
-            pixiView.startRender();
+            introAnimation.add(pixiView.composeIntroAnimation());
             window.onresize = onResize_Screen;
+            pixiView.startRender();
+            introAnimation.play();
+
         });
     }
 
@@ -204,7 +183,7 @@
                 var vo = $(this).data("data");
                 var idx = $(this).index();
                 if( idx != dataProvider.length-1 ){
-                    pixiView.reOrderTileByType( vo.type );
+                    pixiView.refreshTileByType( vo.type );
                 } else {
                     contentLoaded = true;
                     openDetailViewByData( vo );
@@ -254,10 +233,9 @@
     }
 
     var pixiView = new PixiViewContainer();
-    //pixiView.setGestureUI({isDisplay:false, layer:gestureLayer, animation:gestureAnimation});
+    //pixiView.setGestureUI({isDisplay:false, layer:gestureLayer, animation:introAnimation});
     $(pixiView).on( PixiViewEvent.VIEW_MOUSE_DOWN, function(e){
         updateProgressPosition( e.originalEvent );
-        toggleGestureUI( e.originalEvent );
     })
     .on( PixiViewEvent.OPEN_DETAIL_VIEW, function(e){
         openDetailViewByData( e.vo );
