@@ -354,7 +354,7 @@
                "date":"2016.11.15",
                "description":"삼성전자 멤버십 하이브리드 앱<br/>삼성전자 보안가이드를 맞추기 위한 프로세스가 좀 힘겨웠던 프로젝트<br/>진행중 ios버전 업데이트와 함께 swift3.0 강제 스터디",
                "language":"IOS, swift3.0",
-               "implements":["jsContext를 이용한 jsInterface구현","커스텀 AlertView구현"],
+               "implements":["jsContext를 이용한 jsInterface구현","커스텀 AlertView구현","푸시알림"],
                "thumbnails":["assets/image/sec_membership_thumb_1.jpg","assets/image/sec_membership_thumb_2.jpg"],
                "link":"http://membership.samsung.com/sec"
              }
