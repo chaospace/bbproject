@@ -34,6 +34,7 @@
 
   <div id="gesture-layer">
       <div class="gesture"></div>
+      Skip
   </div>
   <div id="progress-layer">
   </div>
@@ -124,6 +125,10 @@
     introAnimation.to( $("#cover-layer"),  1 , {autoAlpha:0, onComplete:function(){$("#cover-layer").remove();}});
     introAnimation.addLabel("endGestureIntro");
 
+    gestureLayer.on("click", function(){
+        introAnimation.gotoAndPlay("endGestureIntro");
+    })
+
     var progress = new CanvasLoader("progress-layer");
     progress.setColor('#ffcc00'); // default is '#000000'
     progress.setDiameter(44); // default is 40
@@ -172,7 +177,6 @@
             window.onresize = onResize_Screen;
             pixiView.startRender();
             introAnimation.play();
-            introAnimation.progress(1);
         });
     }
 

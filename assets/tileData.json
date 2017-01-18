@@ -31,7 +31,7 @@
             "date":"2016.1.03",
             "description":"타일맵 형식의 사이트를 구성해보자 하는 마음에 시작한 프로젝트<br/>시작은 단순이 타일이 클릭&드래그 시 무한히 이어지는게 목표였는데 조금씩 살이 붙다가<br/>지금의 형태가 되었다. 블럭에 내용을 보여줄 것도 없고해서 일단 진행했던 프로젝트로 채움",
             "language":"JavaScript, PixiJS, Howljs, TweenLite, HTML, CSS",
-            "implements":["타일 타입에 따른 내부 타일 구성", "드래그앤 드랍에 따른 타일 생성","타일 추가 시 위치에 기반한 트랜지션", "타일 마우스 오버바향에 따른 타일커버 트랜지션","카테고리 타입에 따른 타일 데이터 갱신","Howljs를 이용한 사운드재생"],
+            "implements":["타일 타입에 따른 내부 타일 구성", "드래그앤 드랍에 따른 타일 생성","타일 추가 시 위치에 기반한 트랜지션", "타일 마우스 오버바향에 따른 타일커버 트랜지션","카테고리 타입에 따른 타일 데이터 갱신","상세페이지 좌우스킵","Howljs를 이용한 사운드재생"],
             "thumbnails":["assets/image/bb_thumb_1.jpg"],
             "link":""
         }
@@ -53,7 +53,7 @@
                 "date":"2016.12.13",
                 "thumbnails":["assets/image/parallax_thumb_0.jpg","assets/image/parallax_thumb_2.jpg","assets/image/parallax_thumb_1.jpg"],
                 "language":"JavaScript, TweenLite, HTML, CSS",
-                "description":"던전앤파이터 티징 사이트로 마우스 휠에 따른 가로이동과 함게 패럴럭스 효과 구현.<br/>게임 일러스트가 준수하니 보기에도 좋음<br/>같은 구현내용도 디스플레이가 중요함을 실감 ㅎ",
+                "description":"던전앤파이터 티징 사이트로 마우스 휠에 따른 가로이동과 함게 패럴럭스 효과 구현 핵심이었다.<br/>게임 일러스트가 멋드러져서 인지 만든 후의 화면도 꽤 훌룡하게 보였다<br/>같은 구현내용도 디스플레이가 중요함을 실감 ㅎ",
                 "implements":["휠 움직임에 따라 프레임값을 조절","타임라인 객체 구현", "애니메이션 랜더러 객체 구현"],
                 "link":"http://www.dfoneople.com/news/updates/Chronicles-of-Luke"
               }
@@ -73,7 +73,7 @@
               },
               "contents":{
                 "date":"2015.10",
-                "description":"영어와 러시아어로 이루어진 현대 자동차 웹진<br/>진행중 빈번한 효과, 이미지 수정 잇슈가 있어 에니메이션 포맷을 xml로 구성 후 이용",
+                "description":"영어와 러시아어로 이루어진 현대 자동차 웹진<br/>보여주는게 중요하고 수정도 빈번한 관계로 효율적인 Animation방식을<br/>구현하기 위해 이것저것 생각해 본 계기가 되었다",
                 "language":"IOS, Objective-C",
                 "implements":["언어 설정에 따른 이미지 전환","페이지 이동에 따른 에니메이션 구현"],
                 "thumbnails":["assets/image/hyundai_webzine_thumb_0.jpg", "assets/image/hyundai_webzine_thumb_1.jpg", "assets/image/hyundai_webzine_thumb_2.jpg"],
@@ -90,7 +90,7 @@
               },
               "contents":{
                 "date":"2013.03",
-                "description":"s오일 어플리케이션 네이티브 영역과 웹컨텐츠를 같이 사용한 하이브리드 앱<br/>IOS 첫 네이티브 ui제작을 경험하게 해준 프로젝트로<br/>ui테마 변경에서 부터 커스텀 ui제작까지 다양한 경험을 얻음.<br/>",
+                "description":"s오일 어플리케이션 네이티브 영역과 웹컨텐츠를 같이 사용한 하이브리드 앱<br/>IOS 첫 네이티브 ui제작을 경험하게 해준 프로젝트로<br/>ui테마 변경에서 부터 커스텀 ui제작까지 다양한 경험을 얻었다.<br/>",
                 "implements":["CoreAudio를 이용한 사운드 믹싱","폰의 Accelerometer이용한 포인트 게임"],
                 "language":"IOS, Objective-C",
                 "thumbnails":["assets/image/s_oil_thumb_1.jpg", "assets/image/s_oil_thumb_2.jpg"],
@@ -171,7 +171,7 @@
 
      ]
    },
-   
+
     {
      "type":"ActionScript",
      "items":[
@@ -352,7 +352,7 @@
              },
              "contents":{
                "date":"2016.11.15",
-               "description":"삼성전자 멤버십 하이브리드 앱<br/>하이브리드 특성상 웹을 구현후 앱은 웹뷰로 포팅만 하면 끝인 줄 알았으나<br/>보안이란 벽 앞에 삽질을 했던 프로젝트<br/>진행중 ios버전 업데이트와 함께 swift3.0 강제 스터디를 선사한 프로젝트",
+               "description":"삼성전자 멤버십 하이브리드 앱<br/>삼성전자 보안가이드를 맞추기 위한 프로세스가 좀 힘겨웠던 프로젝트<br/>진행중 ios버전 업데이트와 함께 swift3.0 강제 스터디",
                "language":"IOS, swift3.0",
                "implements":["jsContext를 이용한 jsInterface구현","커스텀 AlertView구현"],
                "thumbnails":["assets/image/sec_membership_thumb_1.jpg","assets/image/sec_membership_thumb_2.jpg"],
