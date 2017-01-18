@@ -10,7 +10,10 @@
 </head>
 <body>
     <div id="contents-layer">
-        <div class="dim-bg"/></div>
+        <div class="dim-bg"/>
+            <div class="skip-button left"></div>
+            <div class="skip-button right"></div>
+        </div>
         <div class="wrapper">
             <div class="section"></div>
             <div class="close-button"><img src="./assets/image/close_button.jpg"/></div>
@@ -93,6 +96,7 @@
     var gestureLayer = $("#gesture-layer");
     var introAnimation = new TimelineMax({paused:true});
     var gestureDisplay = false;
+    var blockModel  = null;
     function composeGestureAnimation(){
         var px = 0;
     	var py = 0;
@@ -159,16 +163,16 @@
         }
 
         loader.load( function(loader, resources){
-
+            blockModel = new BlockModel( jsonData.tiles );
             toggleProgress();
             textures = resources;
             createMenu( jsonData.menus );
-            pixiView.setDataProvider( jsonData.tiles );
-            introAnimation.add(pixiView.composeIntroAnimation());
+            pixiView.setModel( blockModel ); //jsonData.tiles );
+            introAnimation.add( pixiView.composeIntroAnimation() );
             window.onresize = onResize_Screen;
             pixiView.startRender();
             introAnimation.play();
-
+            introAnimation.progress(1);
         });
     }
 
@@ -183,7 +187,8 @@
                 var vo = $(this).data("data");
                 var idx = $(this).index();
                 if( idx != dataProvider.length-1 ){
-                    pixiView.refreshTileByType( vo.type );
+                    //pixiView.refreshTileByType( vo.type );
+                    blockModel.sortByType( vo.type );
                 } else {
                     contentLoaded = true;
                     openDetailViewByData( vo );
@@ -224,6 +229,23 @@
         contentLoaded = true;
         validateDetailContentShow();
     })
+    .on( ContentsViewEvent.REQUEST_NEXT_CONTENT, function(){
+        if(contentLoaded){
+            contentLoaded = false;
+            toggleProgress();
+            var data = blockModel.getNextData();
+            contentsView.updateContentFromData( data );
+        }
+
+    })
+    .on( ContentsViewEvent.REQUEST_PREV_CONTENT, function(){
+        if(contentLoaded){
+            contentLoaded = false;
+            toggleProgress();
+            var data = blockModel.getPrevData();
+            contentsView.updateContentFromData( data );
+        }
+    });
 
     function validateDetailContentShow(){
         if( pixiView.detailBGContainer.position.y == 0 &&  contentLoaded ){
@@ -245,6 +267,7 @@
     function openDetailViewByData( data ){
         toggleProgress();
         contentsView.setContentsData( data );
+        blockModel.setDataCursor( data );
         pixiView.contentFocusInTransition( validateDetailContentShow );
     }
 
