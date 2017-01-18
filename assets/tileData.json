@@ -268,18 +268,20 @@
            }
          },
          {
-           "title":"...",
-           "date":"2016.4",
+           "title":"AngularJS",
+           "date":"2014.12.09",
            "texture":{
-             "guide":"2x2",
-             "path":"assets/image/elasticletter.jpg",
+             "guide":"2x1",
+             "path":"assets/image/angularjs.jpg",
              "w":388,
              "h":191
            },
            "contents":{
-             "thumbnails":[""],
-             "description":"",
-             "link":""
+             "thumbnails":["assets/image/angularjs_thumb_1.jpg"],
+             "language":"AngularJS, TweenMax",
+             "description":"angularJS를 접하고 실습겸 만든 사이트.<br/>데이터 바인딩과 커스텀디렉티브를 이용한 화면구성이 언어차원에서 지원되는 느낌적 느낌(?)이 좋음<br/>제작하며 느낌점이라면 핵심은 디렉티브라는 것과 유저 인터렉션이 빈번한 곳에는 그냥 jquery를 이용한<br/>구성이 수월하다는 점. 일반 js보다 개발을 하는 입장에서 환영할 만한 프레임워크지만 필요한 곳에 적절이<br/>적용하는 판단도 중요하듯 싶다<br/>사이트는 github를 이용해 살아 있지만 프로젝트는 계정이 사라져 링크가 사라진게 많음..",
+             "link":"http://chaospace.github.io/projects/#/projects",
+             "implements":["커스텀디렉티브를 이용한 ProjectRenderer","html5, css3를 이용한 반응형"]
            }
          }
      ]
