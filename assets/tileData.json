@@ -60,6 +60,62 @@
             }
         ]
       },
+      {
+        "type":"JavaScript",
+        "items":[
+            {
+              "title":"...",
+              "texture":{
+                "guide":"2x1",
+                "path":"assets/image/parallax.jpg",
+                "w":388,
+                "h":191
+              },
+              "contents":{
+                "date":"",
+                "thumbnails":[""],
+                "language":"JavaScript, TweenLite, HTML, CSS",
+                "description":"",
+                "implements":[""],
+                "link":""
+              }
+          },
+              {
+                "title":"ReactJS TourApi",
+                "texture":{
+                  "guide":"1x1",
+                  "path":"assets/image/react_tourapi.jpg",
+                  "w":191,
+                  "h":191
+                },
+                "contents":{
+                  "date":"2017.02.17",
+                  "thumbnails":["assets/image/react_tourapi_thumb_1.jpg","assets/image/react_tourapi_thumb_2.jpg"],
+                  "language":"ReactJS,HTML, CSS",
+                  "description":"reactJS 학습을 위해 진행한 프로젝트<br/>오픈API를 이용해 관광정보를 조회하고 이를 리스트형식으로 제공 클릭 시 상세보기 제공",
+                  "implements":["Router적용한 페이지 랜더링","Store를 이용한 데이터 처리","Browser히스토리 관리","TourAPI를 이용한 정보조회"],
+                  "link":""
+                }
+            },
+            {
+              "title":"...",
+              "texture":{
+                "guide":"2x1",
+                "path":"assets/image/parallax.jpg",
+                "w":191,
+                "h":191
+              },
+              "contents":{
+                "date":"",
+                "thumbnails":[""],
+                "language":"JavaScript, TweenLite, HTML, CSS",
+                "description":"",
+                "implements":[""],
+                "link":""
+              }
+            }
+        ]
+      },
     {
         "type":"Application",
         "items":[
