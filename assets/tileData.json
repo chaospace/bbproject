@@ -45,7 +45,7 @@
               "title":"THREEJS ObjViewer",
               "texture":{
                 "guide":"2x1",
-                "path":"assets/image/obj_viewer_thumb.jpg",
+                "path":"assets/image/obj_viewer.jpg",
                 "w":388,
                 "h":191
               },
@@ -57,7 +57,24 @@
                 "implements":["휠 움직임에 따라 zoom조절","컨트롤에 따른 대상 제어" ],
                 "link":""
               }
+          },
+          {
+            "title":"...",
+            "texture":{
+              "guide":"2x1",
+              "path":"",
+              "w":388,
+              "h":191
+            },
+            "contents":{
+              "date":"",
+              "thumbnails":[],
+              "language":"",
+              "description":"",
+              "implements":[],
+              "link":""
             }
+          }
         ]
       },
       {
