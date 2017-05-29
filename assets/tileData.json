@@ -45,13 +45,13 @@
               "title":"THREEJS ObjViewer",
               "texture":{
                 "guide":"2x1",
-                "path":"assets/image/obj_viewer.jpg",
+                "path":"assets/image/obj_viewer_thumb.jpg",
                 "w":388,
                 "h":191
               },
               "contents":{
                 "date":"2017.4.10",
-                "thumbnails":["assets/image/obj_viewer_1.jpg","assets/image/obj_viewer_2.jpg"],
+                "thumbnails":["assets/image/obj_viewer_0.jpg","assets/image/obj_viewer_1.jpg"],
                 "language":"THREEJS, JavaScript, HTML",
                 "description":"ThreeJS를 이용해 Obj파일을 불러와 보여주는 뷰어<br/>리스트를 추가해 연속적인 데이터를 보여주기로 했으나 중간에 드롭된 프로젝트",
                 "implements":["휠 움직임에 따라 zoom조절","컨트롤에 따른 대상 제어" ],
